@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">COVISlot</string>
+    <string name="drawer_open">Sidebar Open</string>
+    <string name="drawer_close">Sidebar Close</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="get_otp">Get OTP</string>
+    <string name="verify_number_message">Verify mobile number with OTP</string>
+    <string name="enter_area_pin_code">Enter Area Pin Code</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="dash_text">---------</string>
+    <string name="registration_text">Registration</string>
+    <string name="activity_icon">Activity Icon</string>
+</resources>

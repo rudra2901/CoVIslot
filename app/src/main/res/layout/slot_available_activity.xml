@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".AvailableSlotActivity"
+    android:id="@+id/sidebarDrawer2">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AvailableSlotActivity">
+
+        <ImageView
+            android:id="@+id/exclamation"
+            android:layout_width="100dp"
+            android:layout_height="200dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="70dp"
+            android:src="@drawable/exclamation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/exclamation"
+            android:fontFamily="sans-serif-light"
+            android:text="Hurry Up!"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/exclamation"
+            app:layout_constraintStart_toEndOf="@+id/exclamation" />
+
+        <ImageView
+            android:id="@+id/book_slot_message"
+            android:layout_width="383dp"
+            android:layout_height="181dp"
+            android:layout_below="@id/exclamation"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/message_box_gradient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/exclamation"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-light"
+            android:text="Vaccine slots are available in\n your Area.\nBook your appointment before\n they get booked..."
+            android:textAlignment="center"
+            android:textColor="#696969"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/book_slot_message"
+            app:layout_constraintEnd_toEndOf="@+id/book_slot_message"
+            app:layout_constraintStart_toStartOf="@+id/book_slot_message"
+            app:layout_constraintTop_toTopOf="@+id/book_slot_message"
+            app:layout_constraintVertical_bias="0.493" />
+
+        <Button
+            android:id="@+id/redirect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/book_slot_message"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/green_button"
+            android:text="Go to COWIN"
+            android:textAlignment="center"
+            android:textColor="@color/grey_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/book_slot_message"
+            style="?attr/borderlessButtonStyle"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/main_toolbar2"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/activity_main_drawer"
+        android:id="@+id/nav_view2"
+        android:layout_gravity = "start"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

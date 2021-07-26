@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item android:id="@+id/nav_item_one"
+            android:icon="@drawable/baseline_backspace_black_24"
+            android:title="Change Pin Code" />
+        <item android:id="@+id/nav_item_two"
+            android:icon="@drawable/baseline_exit_to_app_black_24"
+            android:title="Log Out" />
+    </group>
+
+    <group>
+        <item android:id="@+id/nav_item_three"
+            android:icon="@drawable/baseline_star_rate_black_24"
+            android:title="Rate us" />
+    </group>
+
+</menu>
