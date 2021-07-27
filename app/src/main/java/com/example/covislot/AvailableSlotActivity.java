@@ -62,11 +62,14 @@ public class AvailableSlotActivity extends AppCompatActivity implements Navigati
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
-        if(item.getItemId() == R.id.nav_item_two) {
+        if(item.getItemId() == R.id.nav_item_logout) {
             SharedPreferences.Editor editor = sp.edit();
             editor.clear();
             editor.commit();
             startActivity(new Intent(AvailableSlotActivity.this,RegistrationActivity.class));
+        }
+        else if(item.getItemId() == R.id.nav_item_change_pin) {
+            startActivity(new Intent(AvailableSlotActivity.this,ChangePinPopupActivity.class));
         }
         return false;
     }

@@ -77,8 +77,7 @@
             android:textColor="@color/grey_1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/book_slot_message"
-            style="?attr/borderlessButtonStyle"/>
+            app:layout_constraintTop_toBottomOf="@+id/book_slot_message" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

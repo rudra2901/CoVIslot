@@ -8,6 +8,7 @@
     android:id="@+id/sidebarDrawer1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/signed_in"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".SignedInActivity">
@@ -79,8 +80,7 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/thank_you_text"
-            style="?attr/borderlessButtonStyle" />
+            app:layout_constraintTop_toBottomOf="@+id/thank_you_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
