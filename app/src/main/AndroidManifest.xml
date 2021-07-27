@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CoVIslot">
-
+        <activity android:name=".ChangePinPopupActivity"
+            android:theme="@style/PopupTheme">
+        </activity>
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,17 +23,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistrationActivity"
-            android:windowSoftInputMode="stateVisible"/>
-        <activity android:name=".SignedInActivity"/>
-        <activity android:name=".AvailableSlotActivity"/>
+        <activity
+            android:name=".RegistrationActivity"
+            android:windowSoftInputMode="stateVisible" />
+        <activity android:name=".SignedInActivity" />
+        <activity android:name=".AvailableSlotActivity" />
 
-        <receiver android:enabled="true" android:name=".BootUpReceiver"
+        <receiver
+            android:name=".BootUpReceiver"
+            android:enabled="true"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
     </application>
+
 </manifest>
