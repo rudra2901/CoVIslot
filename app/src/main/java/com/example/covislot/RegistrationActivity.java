@@ -1,8 +1,7 @@
-package com.example.covislot;
+ package com.example.covislot;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,17 +20,20 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    EditText mobileField, pinField,otpField;
+    private EditText mobileField, pinField,otpField;
     Button getOTP, verifyOTP;
-    String mobileNumber, pinCode, OTP;
+    private String mobileNumber, pinCode, OTP;
 
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback;
     FirebaseAuth auth;
@@ -45,9 +47,11 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration_activity);
 
+        //TODO: Check if data is present in db, and if not enter it
+
         mDatabase = FirebaseDatabase.getInstance().getReference("Users");
         //mDatabase.child("Users");
-        mDatabase.setValue("Hello World");
+        //mDatabase.setValue("Hello World");
 
         sp =  getSharedPreferences("login",MODE_PRIVATE);
 
@@ -62,14 +66,14 @@ public class RegistrationActivity extends AppCompatActivity {
 
         getOTP.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (TextUtils.isEmpty(mobileField.getText().toString())) {
+                if (TextUtils.isEmpty(mobileField.getText().toString()) || mobileField.getText().length() != 10) {
                     // when mobile number field is empty
                     // displaying a toast message.
                     Toast.makeText(RegistrationActivity.this, "Please enter a valid phone number.", Toast.LENGTH_SHORT).show();
                 } else {
                     mobileNumber = "+91" + mobileField.getText().toString();
                 }
-                if (TextUtils.isEmpty(pinField.getText().toString())) {
+                if (TextUtils.isEmpty(pinField.getText().toString()) || pinField.getText().length() != 6) {
                     // when pin number field is empty
                     // displaying a toast message.
                     Toast.makeText(RegistrationActivity.this, "Please enter a valid Pin code.", Toast.LENGTH_SHORT).show();
@@ -99,13 +103,13 @@ public class RegistrationActivity extends AppCompatActivity {
                     OTP = otpField.getText().toString();
                 }
                 PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, OTP);
-                SigninWithPhone(credential);
+                SignInWithPhone(credential);
             }
          });
 
     }
 
-    private void SigninWithPhone(PhoneAuthCredential credential) {
+    private void SignInWithPhone(PhoneAuthCredential credential) {
         auth.signInWithCredential(credential)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -114,8 +118,31 @@ public class RegistrationActivity extends AppCompatActivity {
                             sp.edit().putBoolean("logged", true).apply();
                             sp.edit().putString("phone", mobileNumber).apply();
                             sp.edit().putString("pinCode", pinCode).apply();
-                            
-                            startActivity(new Intent(RegistrationActivity.this,SignedInActivity.class));
+
+                            /*
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+                            Query query = ref.child("Users").orderByChild("number").equalTo(mobileNumber);
+
+                            ValueEventListener valueEventListener = new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                                        //TODO: get the data here
+                                    }
+
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError)
+                                {
+
+                                }
+                            };
+                            query.addValueEventListener(valueEventListener);
+                             */
+
+                            //startActivity(new Intent(RegistrationActivity.this,SignedInActivity.class));
+                            startActivity(new Intent(RegistrationActivity.this,AdditionalDetails.class));
                             finish();
                         } else {
                             Toast.makeText(RegistrationActivity.this,"Incorrect OTP",Toast.LENGTH_SHORT).show();
@@ -147,6 +174,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 getOTP.animate().alpha(0f).setDuration(500);
                 otpField.setVisibility(View.VISIBLE);
                 otpField.animate().alpha(1f).setDuration(500);
+                otpField.requestFocus();
                 verifyOTP.setVisibility(View.VISIBLE);
                 verifyOTP.animate().alpha(1f).setDuration(600);
             }

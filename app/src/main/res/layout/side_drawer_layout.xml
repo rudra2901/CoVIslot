@@ -29,7 +29,7 @@
         android:layout_height="match_parent"
         app:menu="@menu/activity_main_drawer"
         android:id="@+id/nav_view"
-        android:layout_gravity = "start"
+        android:layout_gravity = "start|left"
         app:headerLayout="@layout/nav_header_layout"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
