@@ -120,7 +120,26 @@ public class RegistrationActivity extends AppCompatActivity {
                             sp.edit().putBoolean("logged", true).apply();
                             sp.edit().putString("phone", mobileNumber).apply();
                             sp.edit().putString("pinCode", pinCode).apply();
-                            
+
+                            mDatabase.child(mobileNumber).addListenerForSingleValueEvent(
+                                    new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                            UserInfo user = snapshot.getValue(UserInfo.class);
+                                            sp.edit().putString("name", user.getName()).apply();
+                                            sp.edit().putInt("age", user.getAge()).apply();
+                                            sp.edit().putBoolean("firstDose", user.isFirstDose()).apply();
+
+                                            startActivity(new Intent(RegistrationActivity.this,SignedInActivity.class));
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                                            startActivity(new Intent(RegistrationActivity.this,AdditionalDetails.class));
+                                        }
+                                    }
+                            );
+
                             finish();
                         } else {
                             Toast.makeText(RegistrationActivity.this,"Incorrect OTP",Toast.LENGTH_SHORT).show();

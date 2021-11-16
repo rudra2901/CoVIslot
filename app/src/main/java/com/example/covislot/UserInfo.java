@@ -1,10 +1,10 @@
 package com.example.covislot;
 
 public class UserInfo {
-    public String number;
-    public String name;
-    public int age;
-    public boolean firstDose;
+    private String number;
+    private String name;
+    private int age;
+    private boolean firstDose;
 
     public UserInfo(){
     }
