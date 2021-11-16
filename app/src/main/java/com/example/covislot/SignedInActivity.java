@@ -66,7 +66,7 @@ public class SignedInActivity extends AppCompatActivity implements NavigationVie
         String pin= sp.getString("pinCode", null);
         Calendar cDate = Calendar.getInstance();
         cDate.getTime();
-        String dt = cDate.get(Calendar.DAY_OF_MONTH) + "-" + (cDate.get(Calendar.MONTH)+1) + "-" + cDate.get(Calendar.YEAR);
+        String dt = (cDate.get(Calendar.DAY_OF_MONTH)+1) + "-" + (cDate.get(Calendar.MONTH)+1) + "-" + cDate.get(Calendar.YEAR);
 
         avlSession = QueryUtils.checkSlotAvailability(pin, dt);
 

@@ -55,9 +55,7 @@ public class QueryUtils extends AsyncTask {
             }
         }).start();
 
-        ArrayList<session> s = extractFeatureFromJson(jsonResponse);
-
-        return s;
+        return extractFeatureFromJson(jsonResponse);
     }
     /**
      * Returns new URL object from the given string URL.
@@ -102,7 +100,7 @@ public class QueryUtils extends AsyncTask {
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_TAG, "Problem retrieving the Slot JSON results.", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -142,7 +140,7 @@ public class QueryUtils extends AsyncTask {
         if (TextUtils.isEmpty(sessionJSON)) {
             return null;
         }
-        // Create an empty ArrayList that we can start adding earthquakes to
+        // Create an empty ArrayList that we can start adding sessions to
         ArrayList<session> S = new ArrayList<>();
 
         // Try to parse the JSON response string. If there's a problem with the way the JSON
@@ -154,17 +152,18 @@ public class QueryUtils extends AsyncTask {
             JSONObject baseJsonResponse = new JSONObject(sessionJSON);
 
             // Extract the JSONArray associated with the key called "sessions",
-            // which represents a list of features (or earthquakes).
-            JSONArray sessionArray = baseJsonResponse.getJSONArray("centers");
+            // which represents a list of centres.
+            JSONArray centerArray = baseJsonResponse.getJSONArray("centers");
 
-            // For each earthquake in the earthquakeArray, create an {@link Earthquake} object
-            for (int i = 0; i < sessionArray.length(); i++) {
+            // For each session in the centerArray
+            for (int i = 0; i < centerArray.length(); i++) {
 
-                // Get a single earthquake at position i within the list of earthquakes
-                JSONObject currentCentre = sessionArray.getJSONObject(i);
+                // Get a single center at position i within the list of sessions
+                JSONObject currentCentre = centerArray.getJSONObject(i);
                 JSONArray sessionJson = currentCentre.getJSONArray("sessions");
 
                 for (int j = 0; i < sessionJson.length(); j++) {
+                    //TODO: Check working of JSON parsing mechanism.
                     JSONObject currentSession = sessionJson.getJSONObject(j);
 
                     // Extract the value for the keys

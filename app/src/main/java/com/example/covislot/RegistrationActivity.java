@@ -27,6 +27,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.concurrent.TimeUnit;
 
 public class RegistrationActivity extends AppCompatActivity {
@@ -118,31 +120,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             sp.edit().putBoolean("logged", true).apply();
                             sp.edit().putString("phone", mobileNumber).apply();
                             sp.edit().putString("pinCode", pinCode).apply();
-
-                            /*
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-                            Query query = ref.child("Users").orderByChild("number").equalTo(mobileNumber);
-
-                            ValueEventListener valueEventListener = new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                                        //TODO: get the data here
-                                    }
-
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError)
-                                {
-
-                                }
-                            };
-                            query.addValueEventListener(valueEventListener);
-                             */
-
-                            //startActivity(new Intent(RegistrationActivity.this,SignedInActivity.class));
-                            startActivity(new Intent(RegistrationActivity.this,AdditionalDetails.class));
+                            
                             finish();
                         } else {
                             Toast.makeText(RegistrationActivity.this,"Incorrect OTP",Toast.LENGTH_SHORT).show();

@@ -16,4 +16,17 @@ public class UserInfo {
         this.firstDose = f;
     }
 
+    public String getNumber() {
+        return number;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public int getAge() {
+        return age;
+    }
+    public boolean isFirstDose() {
+        return firstDose;
+    }
 }
