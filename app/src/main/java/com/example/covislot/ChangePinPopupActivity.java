@@ -49,7 +49,7 @@ public class ChangePinPopupActivity extends Activity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(newPin.getText().toString())) {
+                if (TextUtils.isEmpty(newPin.getText().toString()) || newPin.getText().length() != 6) {
                     // when field is empty
                     // displaying a toast message.
                     Toast.makeText(ChangePinPopupActivity.this, "Please enter a Pin Number.", Toast.LENGTH_SHORT).show();

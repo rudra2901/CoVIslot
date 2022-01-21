@@ -56,7 +56,10 @@ public class CheckSessionWorker extends Worker {
            cDate.getTime();
            String dt = cDate.get(Calendar.DAY_OF_MONTH) + "-" + cDate.get(Calendar.MONTH) + "-" + cDate.get(Calendar.YEAR);
 
+           //TODO: Check notification sending mechanism
+           QueryUtils.checkSlotAvailability(pin, dt);
            avlSession = QueryUtils.checkSlotAvailability(pin, dt);
+
            if(avlSession != null && !avlSession.isEmpty()) {
                // notificationId is a unique int for each notification that you must define
                notificationManager.notify(1, builder.build());

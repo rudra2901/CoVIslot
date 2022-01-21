@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.covislot">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -25,9 +26,11 @@
         </activity>
         <activity
             android:name=".RegistrationActivity"
-            android:windowSoftInputMode="stateVisible" />
+            android:windowSoftInputMode="stateVisible"
+            tools:targetApi="cupcake" />
         <activity android:name=".SignedInActivity" />
         <activity android:name=".AvailableSlotActivity" />
+        <activity android:name=".AdditionalDetails" />
 
         <receiver
             android:name=".BootUpReceiver"

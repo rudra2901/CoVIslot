@@ -115,7 +115,7 @@
         app:layout_constraintTop_toBottomOf="@+id/age" />
 
     <Button
-        android:id="@+id/details_button"
+        android:id="@+id/submit_details_button"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
