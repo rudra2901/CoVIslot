@@ -58,7 +58,7 @@ public class AdditionalDetails extends AppCompatActivity {
                     sp.edit().putString("name", user.getName()).apply();
                     sp.edit().putInt("age", user.getAge()).apply();
                     sp.edit().putBoolean("firstDose", user.isFirstDose()).apply();
-                    
+
                     startActivity(new Intent(AdditionalDetails.this,SignedInActivity.class));
                 }
             }
